@@ -6,7 +6,7 @@ function App() {
   const [object, setObject] = useState([])
 
     useEffect(() => { 
-      axios.get('http://localhost:213/api')
+      axios.get('https://prueba-deploy-back.onrender.com/')
       .then(res => {
         setObject(res.data)
       })
