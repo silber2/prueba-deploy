@@ -12,11 +12,11 @@ const objectSchema = new Schema({
 
 const Object = model('obj', objectSchema)
 
-const newObject = {
+const newObject = new Object({
     name: "hola3"
-}
+})
 
-Object.save(newObject)
+newObject.save()
 
 app.get('/api', (req, res) => {
 
