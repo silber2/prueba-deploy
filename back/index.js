@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 
 const app = express();
-const PORT = 213
+
 app.use(cors())
 
 app.get('/api', (req, res) => {
@@ -15,6 +15,6 @@ app.get('/api', (req, res) => {
     res.json(objs)
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log('listeninggg')
 })
