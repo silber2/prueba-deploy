@@ -30,7 +30,7 @@ app.get('/api', (req, res) => {
                 console.error("response is empty")
                 return res.status(404).send("Not Found");
             }
-            res.status(200).send(response)
+            res.status(200).json(response)
         })
         .catch(err => console.error(err + "error get"))
 
