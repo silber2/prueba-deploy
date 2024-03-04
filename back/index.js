@@ -10,11 +10,11 @@ mongoose.connect('mongodb+srv://fransilber16:KMKtQn2qMyR1OU7w@cluster0.8nbblqs.m
     .catch(err => console.error("error db conection"))
 
 
-const objectSchema = new Schema({
-    name: String
-})
+// const objectSchema = new Schema({
+//     name: String
+// })
 
-const Object = model('obj', objectSchema)
+// const Object = model('obj', objectSchema)
 
 // const newObject = new Object({
 //     name: "hola3"
@@ -24,15 +24,16 @@ const Object = model('obj', objectSchema)
 
 app.get('/api', (req, res) => {
 
-    Object.find()
-        .then(response => {
-            if (response.length < 1) {
-                console.error("response is empty")
-                return res.status(404).send("Not Found");
-            }
-            res.status(200).json(response)
-        })
-        .catch(err => console.error(err + "error get"))
+    // Object.find()
+    //     .then(response => {
+    //         if (response.length < 1) {
+    //             console.error("response is empty")
+    //             return res.status(404).send("Not Found");
+    //         }
+    //         res.status(200).json(response)
+    //     })
+    //     .catch(err => console.error(err + "error get"))
+    res.send((console.log("holalalalla")))
     })
     
 app.listen(process.env.PORT, () => {
