@@ -10,11 +10,11 @@ mongoose.connect('mongodb+srv://fransilber16:KMKtQn2qMyR1OU7w@cluster0.8nbblqs.m
     .catch(err => console.error("error db conection"))
 
 
-// const objectSchema = new Schema({
-//     name: String
-// })
+const objectSchema = new Schema({
+    name: String
+})
 
-// const Object = model('obj', objectSchema)
+const Object = model('obj', objectSchema)
 
 // const newObject = new Object({
 //     name: "hola3"
@@ -33,6 +33,9 @@ app.get('/api', (req, res) => {
             res.status(200).json(response)
         })
         .catch(err => console.error(err + "error get"))
+    // const buscarObjs = async () => {
+    //     const objs = await Object.fund
+    // }
 
     })
     
