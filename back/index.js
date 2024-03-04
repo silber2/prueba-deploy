@@ -24,16 +24,16 @@ mongoose.connect('mongodb+srv://fransilber16:KMKtQn2qMyR1OU7w@cluster0.8nbblqs.m
 
 app.get('/api', (req, res) => {
 
-    // Object.find()
-    //     .then(response => {
-    //         if (response.length < 1) {
-    //             console.error("response is empty")
-    //             return res.status(404).send("Not Found");
-    //         }
-    //         res.status(200).json(response)
-    //     })
-    //     .catch(err => console.error(err + "error get"))
-    res.send((console.log("holalalalla")))
+    Object.find()
+        .then(response => {
+            if (response.length < 1) {
+                console.error("response is empty")
+                return res.status(404).send("Not Found");
+            }
+            res.status(200).send(response)
+        })
+        .catch(err => console.error(err + "error get"))
+
     })
     
 app.listen(process.env.PORT, () => {
