@@ -1,39 +1,36 @@
-import express from 'express'
-import cors from 'cors'
-import {Schema, model} from 'mongoose'
-import mongoose from 'mongoose'
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
 
 const app = express();
-app.use(cors())
-mongoose.connect('mongodb+srv://fransilber16:KMKtQn2qMyR1OU7w@cluster0.8nbblqs.mongodb.net/pruebadeploy?retryWrites=true&w=majority&appName=Cluster0')
-    .then(console.log("db connected"))
-    .catch(err => console.error("error db conection"))
+app.use(cors());
 
+mongoose.connect('mongodb+srv://fransilber16:KMKtQn2qMyR1OU7w@cluster0.8nbblqs.mongodb.net/pruebaDeploy?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("DB connected");
+        app.listen(process.env.PORT, () => {
+            console.log('Listening on port', process.env.PORT);
+        });
+    })
+    .catch(err => console.error("Error connecting to the database:", err));
 
-const objectSchema = new Schema({
+const objectSchema = new mongoose.Schema({
     name: String
-})
+});
 
-const Object = model('obj', objectSchema)
-
-// const newObject = new Object({
-//     name: "hola3"
-// })
-
-// newObject.save()
+const ObjectModel = mongoose.model('obj', objectSchema);
 
 app.get('/api', (req, res) => {
-
-    Object.find()
+    ObjectModel.find()
         .then(response => {
             if (response.length < 1) {
-                console.error("response is empty")
+                console.error("Response is empty");
                 return res.status(404).send("Not Found");
             }
-            res.status(200).json(response)
+            res.status(200).json(response);
         })
-        .catch(err => console.error(err + "error get"))
-    })
-app.listen(process.env.PORT, () => {
-    console.log('listeninggg')
-})
+        .catch(err => {
+            console.error("Error getting data:", err);
+            res.status(500).send("Internal Server Error");
+        });
+});
