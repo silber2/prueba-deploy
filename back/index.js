@@ -24,19 +24,21 @@ const Object = model('obj', objectSchema)
 
 app.get('/api', (req, res) => {
 
-    Object.find()
-        .then(response => {
-            if (response.length < 1) {
-                console.error("response is empty")
-                return res.status(404).send("Not Found");
-            }
-            res.status(200).json(response)
-        })
-        .catch(err => console.error(err + "error get"))
-    // const buscarObjs = async () => {
-    //     const objs = await Object.fund
-    // }
+    // Object.find()
+    //     .then(response => {
+    //         if (response.length < 1) {
+    //             console.error("response is empty")
+    //             return res.status(404).send("Not Found");
+    //         }
+    //         res.status(200).json(response)
+    //     })
+    //     .catch(err => console.error(err + "error get"))
+    const buscarObjs = async () => {
+        const resp = await Object.find()
+        res.json(resp)
+    }
 
+    buscarObjs()
     })
     
 app.listen(process.env.PORT, () => {
