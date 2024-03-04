@@ -22,6 +22,10 @@ const Object = model('obj', objectSchema)
 app.get('/api', async (req, res) => {
 
     const objs = await Object.find()
+    if (objs.length < 1) {
+        console.log('objs is empty')
+    }
+    console.log(objs)
     res.json(objs)
 })
 
