@@ -19,11 +19,10 @@ const Object = model('obj', objectSchema)
 
 // newObject.save()
 
-app.get('/api', (req, res) => {
+app.get('/api', async (req, res) => {
 
-    Object.find({})
-        .then(objs => res.json(objs))
-        .catch(err => console.error(err + ' error find'))
+    const objs = await Object.find()
+    res.json(objs)
 })
 
 app.listen(process.env.PORT, () => {
