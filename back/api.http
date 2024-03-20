@@ -1,0 +1,15 @@
+### 
+GET https://prueba-deploy-back.onrender.com/api HTTP/1.1
+
+###
+GET http://localhost:2322/api/createOrder HTTP/1.1
+
+###
+POST http://localhost:2322/api/createOrder HTTP/1.1
+Content-Type: application/json
+
+ {
+            "title": "Mi producto",
+            "quantity": 1,
+            "unit_price": 20
+          }
